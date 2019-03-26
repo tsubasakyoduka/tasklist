@@ -10,6 +10,10 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 <li class="nav-item">{!! link_to_route('tasks.create', '新規タスクの投稿', [], ['class' => 'nav-link']) !!}</li>
+            <ul class="nav navbar-nav navbar-right">
+                    <li>{!! link_to_route('signup.get', '登録', [], ['class' => 'nav-link']) !!}</li>
+                    <li><a href="#">Login</a></li>
+                </ul>
             </ul>
         </div>
     </nav>
