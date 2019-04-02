@@ -8,20 +8,26 @@ use App\User;
 
 class UsersController extends Controller
 {
-     public function index()
+   public function index()
     {
         $users = User::orderBy('id', 'desc')->paginate(10);
 
         return view('users.index', [
             'users' => $users,
         ]);
-    }
-    public function show($id)
+    } 
+     public function show($id)
     {
         $user = User::find($id);
+        $tasks = $user->tasks()->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('users.show', [
+        $data = [
             'user' => $user,
-        ]);
+            'tasks' => $tasks,
+        ];
+
+        $data += $this->counts($user);
+
+        return view('users.show', $data);
     }
 }
